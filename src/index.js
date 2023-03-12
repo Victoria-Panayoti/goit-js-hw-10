@@ -27,9 +27,11 @@ function onInputSearch(event) {
         return;
       }
         if (responce.length > 1 && responce.length <= 10) {
+            refs.countryInfo.innerHTML = '';
             renderList(responce, refs.countryList);
             return;
         }
+        refs.countryList.innerHTML = '';
         renderInfo(responce, refs.countryInfo);
     }) 
     .catch(error => {
@@ -49,26 +51,27 @@ function renderList(responce) {
     .join('');
   refs.countryList.insertAdjacentHTML('beforeend', markupList);
 }
+    
 function renderInfo(responce) {
   const markupInfo = responce
     .map(
       item => `
       <table>
         <tr>
-          <th><img class="flag" src="${item.flags.svg}" alt="${item.flags.alt}"></th>
+          <th><img class="flag-info" src="${item.flags.svg}" alt="${item.flags.alt}"></th>
           <th>${item.name.official}</th>
         </tr>
         <tr>
-          <td>Capital:</td>
+          <td class="property">Capital:</td>
           <td>${item.capital}</td>
         </tr>
         <tr>
-          <td>Population:</td>
+          <td class="property">Population:</td>
           <td>${item.population}</td>
         </tr>
         <tr>
-          <td>Languages:</td>
-          <td>${item.languages}</td>
+          <td class="property">Languages:</td>
+          <td>${Object.values(item.languages).join(', ')}</td>
         </tr>
       </table>
         `

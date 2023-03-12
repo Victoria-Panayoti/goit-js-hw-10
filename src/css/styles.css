@@ -19,6 +19,10 @@ body {
   margin-bottom: 16px;
 }
 
+th {
+  text-align: start;
+}
+
 .country-list {
   display: flex;
   flex-direction: column;
@@ -35,5 +39,12 @@ body {
 .flag {
   width: 30px;
   height: 20px;
+}
+.flag-info {
+  width: 40px;
+  height: 30px;
+}
+.property {
+  font-weight: bold;
 }
 
